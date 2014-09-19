@@ -1,6 +1,6 @@
 # PathSearch
 
-TODO: Write a gem description
+Breadth, depth and shorted path searches.
 
 ## Installation
 
@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Check the *.specs
 
 ## Contributing
 

@@ -1,11 +1,27 @@
 require 'spec_helper'
 
 describe PathSearch do
-  it 'has a version number' do
-    expect(PathSearch::VERSION).not_to be nil
-  end
+  describe 'Graph' do
+    describe '#bfs' do
+      before :each do
+        @graph = PathSearch::Graph.new.tap do |g|
+          g.add_node(:Bucharest)
+          g.add_node(:Indonesia)
+          g.add_node(:Portugal)
+          g.add_node(:Spain)
+          g.add_node(:France)
+          g.add_edge(:Bucharest, :Indonesia)
+          g.add_edge(:Indonesia, :Portugal)
+          g.add_edge(:Indonesia, :France)
+        end
+      end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+      it 'returns nil for the non-existant path from Bucharest and Spain' do
+        expect(@graph.bfs(:Bucharest, :Spain)).to be nil
+      end
+      it 'returns :Portugal for the existant path from Bucharest and Portugal' do
+        expect(@graph.bfs(:Bucharest, :Portugal)).to eq(:Portugal)
+      end
+    end
   end
 end
